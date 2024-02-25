@@ -1,50 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vkhut <vkhut@student.42prague.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/25 17:44:44 by vkhut             #+#    #+#             */
+/*   Updated: 2024/02/25 18:01:53 by vkhut            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int ft_printf(const char *s, ...)
+int	ft_selection(va_list args, char detecter)
 {
-    va_list args;
-    int input;
-    int i;
+	int	output;
 
-    i = 0; 
-    input = 0;
-
-    va_start (args, s);
-    while(s[i] != '\0')
-    {
-        if (s[i] == '%')
-        {
-            input += ft_selection(args, s[i+1]);
-            i++;
-        }
-        else
-        {
-            input += ft_putchar(s[i]);
-            i++;
-        }   
-    }
-    va_end(args);
-    return (input);
+	output = 0;
+	if (detecter == 'c')
+		output = ft_printchar(va_arg(args, int));
+	else if (detecter == 's')
+		output = ft_printstr(va_arg(args, char *));
+	else if (detecter == 'p')
+		output = ft_printptr(va_arg(args, unsigned long long));
+	else if (detecter == 'd' || detecter == 'i')
+		output = ft_printnbr(va_arg(args, int), 10, 0);
+	else if (detecter == 'u')
+		output = ft_printnbr(va_arg(args, unsigned int), 10, 0);
+	else if (detecter == 'x')
+		output = ft_printnbr(va_arg(args, unsigned int), 16, 0);
+	else if (detecter == 'X')
+		output = ft_printnbr(va_arg(args, unsigned int), 16, 1);
+	else if (detecter == '%')
+		output = ft_printchar('%');
+	else
+		output = ft_printstr("There is an error, please check again");
+	return (output);
 }
 
-int ft_selection(va_list args, char detector)
+int	ft_printf(const char *str, ...)
 {
-    int input;
-    
-    input = 0;
-    if (detector == 'c')
-        input = ft_putchar(va_arg(args, int));
-    else if (detector == 's')
-        input = ft_putchar(va_arg(args, char*));
-    else if (detector == 'p')
-        input = ft_putptr(va_arg(args, void*));
-    else if (detector == 'i' || detector == 'd')
-        input = ft_putnbr(va_arg(args, int));
-    else if (detector == 'u')
-        input = ft_putunsign(va_arg(args, unsigned int));
-    else if (detector == 'x' || detector == 'X')
-        input = ft_puthex(va_arg(args, unsigned int),detector);
-    else if (detector == '%')
-        input = ft_putchar('%');
-    return (input);               
+	va_list	args;
+	int		i;
+	int		output;
+
+	i = 0;
+	output = 0;
+	va_start(args, str);
+	while (str[i] != '\0')
+	{
+		if (str[i] == '%')
+		{
+			output += ft_selection(args, str[i + 1]);
+			i++;
+		}
+		else
+			output += ft_printchar(str[i]);
+		i++;
+	}
+	va_end(args);
+	return (output);
 }

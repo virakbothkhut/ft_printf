@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkhut <vkhut@student.42prague.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/25 17:44:53 by vkhut             #+#    #+#             */
-/*   Updated: 2024/02/25 18:02:03 by vkhut            ###   ########.fr       */
+/*   Created: 2024/02/25 17:44:35 by vkhut             #+#    #+#             */
+/*   Updated: 2024/02/25 18:01:30 by vkhut            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdint.h>
-# include <unistd.h>
-# include <stdio.h>
-
-int	ft_printchar(char c);
-int	ft_printf(const char *str, ...);
-int	ft_printnbr(long n, int base, int uppercase);
-int	ft_printptr(unsigned long long ptr);
-int	ft_printstr(char *s);
-#endif
+int	ft_printchar(char c)
+{
+	return (write(1, &c, 1));
+}
