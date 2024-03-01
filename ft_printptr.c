@@ -6,13 +6,13 @@
 /*   By: vkhut <vkhut@student.42prague.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 17:45:13 by vkhut             #+#    #+#             */
-/*   Updated: 2024/02/25 18:00:40 by vkhut            ###   ########.fr       */
+/*   Updated: 2024/02/26 16:24:05 by vkhut            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	int	ft_putptr(uintptr_t nbr)
+static int	ft_putptr(uintptr_t nbr)
 {
 	char	*string;
 	int		value;

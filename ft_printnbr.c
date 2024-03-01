@@ -6,7 +6,7 @@
 /*   By: vkhut <vkhut@student.42prague.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 17:45:00 by vkhut             #+#    #+#             */
-/*   Updated: 2024/02/25 17:46:19 by vkhut            ###   ########.fr       */
+/*   Updated: 2024/02/26 16:47:12 by vkhut            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ int	ft_printnbr(long n, int base, int uppercase)
 	return (output);
 }
 
-// int main()
+// int	main(void)
 // {
-//     long number = 53278;
-//     int base = 16;
-//     int uppercase = 1;
+// 	long	number = 53278;
+// 	int base = 16;
+// 	int uppercase = 1;
 
-//     int characters_written = ft_printnbr(number, base, uppercase);
-//     write(1, "\n", 1);
+// 	int characters_written = ft_printnbr(number, base, uppercase);
+// 	write(1, "\n", 1);
 // 	write(1, &characters_written, sizeof(characters_written));
-// 	return 0;
+// 	return (0);
 // }
